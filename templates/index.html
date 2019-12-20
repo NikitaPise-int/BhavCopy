@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.20/css/jquery.dataTables.css">
+	<link rel="stylesheet" type="text/css" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
+	<title></title>
+	
+</head>
+
+<body>
+
+	<table id="example" class="display" cellspacing="0" height="100%" width="100%"></table>
+
+	<!-- <table id="example" class="display nowrap" style="width:100%">
+        <thead>
+            <tr>
+                <th>SC_CODE</th>
+                <th>SC_NAME</th>
+                <th>OPEN</th>
+                <th>HIGH</th>
+                <th>LOW</th>
+                <th>CLOSE</th>
+
+            </tr>
+        </thead>
+    </table> -->
+</body>
+</html>
+
+
+
+
+<style type="text/css">
+	
+	.h1 {
+		font-size: 5px;
+	}
+	div{
+
+		 position: relative;
+
+		overflow: hidden !important;
+
+		max-height: 100% !important;
+
+		width: 100%;
+
+		background-color: 
+			}
+</style>
+  
+
+<script
+  src="https://code.jquery.com/jquery-3.4.1.min.js"
+  integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo="
+  crossorigin="anonymous"></script>
+  <script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.10.20/js/jquery.dataTables.js"></script>
+<script type="text/javascript">
+	var my_columns = {
+	    "columns": [
+	        { "title": "SC_CODE"},
+	        { "title": "SC_NAME" },
+	        { "title": "OPEN"},
+	        { "title": "HIGH"},
+	        { "title": "LOW"},
+	        { "title": "CLOSE"}
+
+	    ]
+	};
+	$(document).ready(function() {
+		var tmp = {{ list }};
+    $('#example').DataTable( {
+    	data:tmp,
+        deferRender:    true,
+        scrollY:        200,
+        scrollCollapse: true,
+        scroller:       true,
+        aaSorting : [[3, 'desc']],
+        "language": {
+		    "search": "Filter by SC_NAME:"
+		},
+		
+        "columnDefs": [
+			{"searchable": false, "targets": 0 },
+			{"searchable": true, "targets": 1 },
+			{"searchable": false, "targets": 2 },
+			{"searchable": false, "targets": 3 },
+			{"searchable": false, "targets": 4 },
+		],
+        "columns": my_columns.columns
+    } );
+} );
+</script>
